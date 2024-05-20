@@ -30,8 +30,8 @@ import {
 } from "@/src/components/ui/select";
 import { Input } from "@/src/components/ui/input";
 import { ProjectRole } from "@langfuse/shared";
-import { roleAccessRights } from "@/src/features/rbac/constants/roleAccessRights";
-import { useHasAccess } from "@/src/features/rbac/utils/checkAccess";
+import { roleAccessRights } from "@/src/features/rbac/constants/projectAccessRights";
+import { useHasProjectAccess } from "@/src/features/rbac/utils/checkProjectAccess";
 import { usePostHogClientCapture } from "@/src/features/posthog-analytics/usePostHogClientCapture";
 
 const availableRoles = [
@@ -48,7 +48,7 @@ const formSchema = z.object({
 export function CreateProjectMemberButton(props: { projectId: string }) {
   const capture = usePostHogClientCapture();
   const [open, setOpen] = useState(false);
-  const hasAccess = useHasAccess({
+  const hasAccess = useHasProjectAccess({
     projectId: props.projectId,
     scope: "members:create",
   });

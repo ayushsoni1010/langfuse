@@ -100,9 +100,10 @@ export type AuditLog = {
     created_at: Generated<Timestamp>;
     updated_at: Generated<Timestamp>;
     user_id: string;
-    project_id: string;
-    org_id: string | null;
-    user_project_role: ProjectRole;
+    org_id: string;
+    user_org_role: Generated<OrganizationRole>;
+    project_id: string | null;
+    user_project_role: ProjectRole | null;
     resource_type: string;
     resource_id: string;
     action: string;
